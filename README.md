@@ -134,7 +134,3 @@ cd backend
 - `GET|POST /api/measurement-sessions` and `POST /api/measurement-sessions/{id}/capture`
 - `GET /api/measurement-sessions/compare`
 - Scenario, anomaly, attack-simulation, and optimization endpoints under `/api`
-
-## License
-
-Released under the [MIT License](LICENSE). Data imported from external sources remains subject to its source license and attribution requirements.
