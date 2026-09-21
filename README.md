@@ -15,6 +15,12 @@ The project demonstrates production-minded full-stack engineering: data provenan
 - **Research sessions:** capture local measurements, compare compatible runs, and export privacy-preserving CSV/JSON or printable reports.
 - **Operational foundations:** Alembic migrations, verified SQLite backups, readiness checks, retention, tracked ingestion jobs, and CI security audits.
 
+## What I built
+
+I designed and implemented the repository's end-to-end system: the FastAPI service and data model, React operations dashboard, telemetry adapters, replay and seeded simulation modes, explainable anomaly workflow, guarded optimization flow, and measurement-session exports. I also added the migration/backup path and the automated verification stack covering backend, frontend, browser, security, and short soak checks.
+
+The key engineering decision was to keep observed, replayed, and synthetic data explicitly separate. Optimization follows the same safety principle: users preview a baseline and projected state, stale evaluations are rejected, and repeated apply requests are idempotent.
+
 ## Architecture
 
 ```mermaid
@@ -62,6 +68,16 @@ cd ..
 Open `http://127.0.0.1:5173`. API documentation is available at `http://127.0.0.1:8000/docs`.
 
 NetTwin works without a paid API. OpenCellID is optional and file-based. RIPE Atlas reads existing public measurements. The local agent uses configurable HTTP targets and a controlled download sample.
+
+## Two-minute guided demo
+
+1. Open the dashboard and check **System status** to see which data sources are configured.
+2. Compare **Live** observations with a bounded **Replay** window; replay never includes data from the future.
+3. Run a seeded **Simulation**, inspect why an anomaly was flagged, and preview an optimization.
+4. Change the underlying state before applying that preview to see the stale evaluation rejected.
+5. Open **Sessions**, capture a local measurement, and export a report without location fields.
+
+This path demonstrates the central design decision: observed, replayed, and synthetic data remain distinguishable while every mutating optimization requires an explicit, current evaluation. The dashboard screenshot above provides a no-install preview; the steps are reproducible locally with the included seeded data.
 
 ## Core workflows
 
